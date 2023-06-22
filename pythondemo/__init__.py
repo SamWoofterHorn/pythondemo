@@ -20,7 +20,7 @@ def create_app():
 
     @app.after_request
     def default_headers(response):
-        response.headers["Cache-Control"] = "no-cache"
+        response.headers["Cache-Control"] = "no-cache, must-revalidate"
         return response
 
     return app
