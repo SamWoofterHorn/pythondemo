@@ -27,12 +27,6 @@ RUN pip wheel -w /build/wheels -r requirements.txt
 # and build a wheel for uWSGI
 RUN pip wheel -w /build/wheels uwsgi==2.0.20
 
-#######
-# NGINX
-#######
-
-FROM altalang/k8s-nginx:v12 AS nginx-build
-
 #############
 # FINAL IMAGE
 #############
