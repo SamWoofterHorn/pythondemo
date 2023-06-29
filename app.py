@@ -1,3 +1,6 @@
+# Standard lib
+import os
+
 # Third-party packages
 import click
 
@@ -8,8 +11,14 @@ def cli():
 
 
 @cli.command()
-def server():
+@click.argument("mode",
+                type=click.Choice(["development", "production", "test"]))
+def server(mode):
     from pythondemo import create_app
+
+    debug = (mode != "production")
+
+    os.environ['FLASK_DEBUG'] = debug
 
     app = create_app()
     app.run(host="0.0.0.0", port=5002)
