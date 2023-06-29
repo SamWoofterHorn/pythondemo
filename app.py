@@ -16,11 +16,8 @@ def cli():
 def server(mode):
     from pythondemo import create_app
 
-    debug = (mode != "production")
-
-    if debug:
-        if 'FLASK_ENV' not in os.environ:
-            os.environ['FLASK_ENV'] = 'development'
+    if 'FLASK_ENV' not in os.environ:
+        os.environ['FLASK_ENV'] = mode
 
     app = create_app()
     app.run(host="0.0.0.0", port=5002)
