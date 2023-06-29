@@ -18,7 +18,7 @@ def server(mode):
 
     debug = (mode != "production")
 
-    os.environ['FLASK_DEBUG'] = debug
+    os.environ['FLASK_DEBUG'] = str(debug)
 
     app = create_app()
     app.run(host="0.0.0.0", port=5002)
